@@ -25,12 +25,12 @@ jobs:
           file: ./docker/Dockerfile.userApp
           push: true
           tags: mattiullah/mysamplenextapp:latest # Replace with your Docker Hub username and repository
-
+          
       - name: Verify Pushed Image
-        run: docker pull mattiullah/mysamplenextapp:latest # Replace with your Docker Hub username and repository
-        - name: Deploy to EC2
-      uses: appleboy/ssh-action@master
-      with:
+        run: docker pull mattiullah/mysamplenextapp:latest 
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
